@@ -1,0 +1,17 @@
+<!-- accounts/templates/accounts/team_member_dashboard.html -->
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h2>Team Member Dashboard</h2>
+  <p>Welcome, {{ user.username }}. You have team member privileges.</p>
+  <p><a href="{% url 'book_seat' %}">Book a Seat</a></p>
+  <h3>Your Bookings</h3>
+  <ul>
+    {% for booking in user.bookings.all %}
+      <li>
+        {{ booking.seat }} on {{ booking.date }}
+        <a href="{% url 'cancel_booking' booking.id %}">Cancel</a>
+      </li>
+    {% endfor %}
+  </ul>  <!-- Team member-specific content goes here -->
+{% endblock %}

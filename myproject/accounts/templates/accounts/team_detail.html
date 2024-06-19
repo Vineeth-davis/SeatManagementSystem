@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Team Detail</title>
+</head>
+<body>
+    <h1>Team: {{ team.name }}</h1>
+    <h2>Manager: {{ team.manager.username }}</h2>
+    <h3>Total Seats: {{ team.total_seats }}</h3>
+    <h3>Members:</h3>
+    <ul>
+        {% for member in team.members.all %}
+            <li>{{ member.username }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'update_team' team.id %}">Update Team</a>
+    <a href="{% url 'delete_team' team.id %}">Delete Team</a>
+    <a href="{% url 'add_member_to_team' team.id %}">Add Members</a>
+</body>
+</html>

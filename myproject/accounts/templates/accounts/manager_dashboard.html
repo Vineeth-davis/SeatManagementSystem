@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Dashboard</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Manager Dashboard</h1>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="container">
+        <div class="card">
+            <h2>Create Team</h2>
+            <form method="post" action="{% url 'create_team' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Create Team</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2>Book Seat</h2>
+            <form id="bookSeatForm" method="post" action="{% url 'book_seat' %}">
+                {% csrf_token %}
+                {{ book_seat_form.as_p }}
+                <button type="submit">Book Seat</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2>Cancel Booking</h2>
+            <form id="cancelBookingForm" method="post" action="{% url 'cancel_booking' %}">
+                {% csrf_token %}
+                {{ cancel_booking_form.as_p }}
+                <button type="submit">Cancel Booking</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
